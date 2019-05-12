@@ -102,7 +102,20 @@ summary(numofsteps)
 
 ```r
 mean_numofsteps <- mean(numofsteps)
+mean_numofsteps
+```
+
+```
+## [1] 9354.23
+```
+
+```r
 median_numofsteps <- median(numofsteps)
+median_numofsteps
+```
+
+```
+## [1] 10395
 ```
 
 ### Q.3 Time series plot visualize the total number of steps, every day for an interval
@@ -172,7 +185,20 @@ summary(TotalstepsdfileNoNAs$steps)
 
 ```r
 Totalstepsmean=mean(TotalstepsdfileNoNAs$steps)
+Totalstepsmean
+```
+
+```
+## [1] 10766.19
+```
+
+```r
 Totalstepsmedian = median(TotalstepsdfileNoNAs$steps)
+Totalstepsmedian
+```
+
+```
+## [1] 10766.19
 ```
 
 Difference in distribution before and after missing values got filled-
