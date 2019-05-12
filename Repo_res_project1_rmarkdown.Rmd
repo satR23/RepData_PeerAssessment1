@@ -3,6 +3,8 @@ title: "Repo_research_project1"
 author: "Sathya Thiruvengadam"
 date: "May 2, 2019"
 output: html_document
+    
+    
 ---
 
 ## This the code for reproduciable research project 1
@@ -18,14 +20,14 @@ library(dplyr)
 library(lubridate)
 ```
 
-Q.1 Read *.csv file and store in the variable "dfile"
+### Q.1 Read csv file and store in the variable "dfile"
 
 ```{r rdfile}
 dfile <- read.csv("./activity.csv")
 ```
 
 
-Q.2 Calculate total number of steps per day
+### Q.2 Calculate total number of steps per day
 
 ```{r numofsteps}
 numofsteps <- tapply(dfile$steps, dfile$date, sum, na.rm=TRUE)
@@ -44,7 +46,7 @@ mean_numofsteps <- mean(numofsteps)
 median_numofsteps <- median(numofsteps)
 ```
 
-Q.3 Time series plot visualize the total number of steps, every day for an interval
+### Q.3 Time series plot visualize the total number of steps, every day for an interval
 ```{r Avgstepsperinterval}
 dfile %>% group_by(interval) %>%
     summarise(meanstepsperinterval = mean(steps, na.rm = TRUE)) %>%
@@ -63,7 +65,7 @@ Total number of rows with missing value NA in the dataset
 colSums(is.na(dfile))
 ```
 
-Q.4 Fill all NA's with column mean and create a new data frame "dfileNoNas" with missing data filled in.
+### Q.4 Fill all NA's with column mean and create a new data frame "dfileNoNas" with missing data filled in.
 ```{r NAfillmean}
 dfile %>% mutate_all(~ifelse(is.na(.x),mean(.x, na.rm=TRUE), .x)) -> dfileNoNAs
 ```
@@ -88,7 +90,7 @@ Difference in distribution before and after missing values got filled-
 We can see the distribution is symmetric once the missing values are filled,
 mean is equal to median, where it was negative skewed before with mean less than median.
 
-Q.5 Creating new variable DaysOfWeek using the function weekdays()
+### Q.5 Creating new variable DaysOfWeek using the function weekdays()
 ```{r detdaysofweek}
 dfileNoNAs$date <- as.Date(dfileNoNAs$date, origin=lubridate::origin)
 weekdays1 <- c("Monday","Tuesday","Wednesday","Thursday","Firday")
